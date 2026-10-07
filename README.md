@@ -1,5 +1,7 @@
 # Kalshi Favorites Screener
 
+![tests](https://github.com/ChuchoMonster/kalshi-favorites-screener/actions/workflows/tests.yml/badge.svg)
+
 A read-only command-line screener that scans open [Kalshi](https://kalshi.com) prediction markets
 for **long-dated, liquid favorites** — the profile that research on the favorite-longshot bias
 suggests is most often underpriced.
@@ -60,6 +62,13 @@ python3 kalshi_screener.py --categories Politics Elections --min-price 0.75
 
 Progress messages go to stderr and the table to stdout, so `> results.txt` captures just the
 results.
+
+## Tests
+
+- `python3 -m unittest discover -s tests -v` from the repo root. Standard library only, nothing to install.
+- Covers the mid-price fallbacks, every screen filter and its edges, sorting and `--top`, cursor pagination with 429 backoff, and the CLI output.
+- No network: the Kalshi API is replaced with fakes and fictional markets.
+- Runs on every push and pull request via GitHub Actions.
 
 ## Environment variables
 
